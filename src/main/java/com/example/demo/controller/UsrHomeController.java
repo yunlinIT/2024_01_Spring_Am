@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.demo.vo.Article;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,7 +21,7 @@ public class UsrHomeController {
 	@RequestMapping("/usr/home/getArticle")
 	@ResponseBody
 	public Article getArticle() {
-		Article article = new Article(1, "제목1");
+		Article article = new Article(1, "제목1", "내용1"); 
 
 		return article;
 	}
@@ -27,7 +29,7 @@ public class UsrHomeController {
 	@RequestMapping("/usr/home/getList")
 	@ResponseBody
 	public List<String> getList() {
-		List<String> list = new ArrayList<>();
+		List<String> list = new ArrayList<>(); // 인덱스 -> 1개의 값
 
 		list.add("철수나이");
 		list.add("영수나이");
@@ -40,7 +42,7 @@ public class UsrHomeController {
 	public Map<String, Object> getMap() {
 		Map<String, Object> map = new HashMap<>();
 
-		map.put("철수나이", 11);
+		map.put("철수나이", 11); // 키 -> 벨류
 		map.put("영수나이", 12);
 
 		return map;
@@ -71,11 +73,3 @@ public class UsrHomeController {
 	}
 }
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-class Article {
-	int id;
-	String title;
-
-}
