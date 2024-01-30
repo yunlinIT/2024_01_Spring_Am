@@ -1,5 +1,8 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +17,8 @@ public class UsrMemberController {
 
 	@Autowired
 	private MemberService memberService;
+	
+//	List<Member> members = new ArrayList<>();
 
 	@RequestMapping("/usr/member/doJoin")
 	@ResponseBody
@@ -52,4 +57,52 @@ public class UsrMemberController {
 
 		return member;
 	}
+	
+	
+	
+//	@RequestMapping("/usr/member/doLogin")
+//	@ResponseBody
+//	public Object doLogin(String loginId, String loginPw) {
+//		
+//		Member member = memberService.getMemberByLoginId(loginId);
+//		
+//		if (loginId == null) {
+//			return "아이디를 입력해주세요";
+//		}
+//		if (loginPw == null) {
+//			return "비밀번호를 입력해주세요";
+//		}
+//		
+//		if (member.getLoginId() != loginId) {
+//			return "아이디를 확인해주세요.";
+//		}
+//		if (member.getLoginPw() != loginPw) {
+//			return "비밀번호를 다시 확인해주세요.";
+//		}
+//		
+//
+//		return "회원님 환영합니다";
+//	}
+//	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
