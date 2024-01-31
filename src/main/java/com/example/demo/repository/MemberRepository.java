@@ -42,15 +42,5 @@ public interface MemberRepository {
 
 	@Select("SELECT * FROM `member` WHERE id = #{id}")
 	public Member getMember(int id);
-	
-	
-	@Select("""
-			SELECT *
-			FROM `member`
-			WHERE loginId = #{loginId}
-			AND loginPw = #{loginPw}
-			""")
-	public void login(String loginId, String loginPw);
-
 
 }
