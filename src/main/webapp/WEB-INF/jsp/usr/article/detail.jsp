@@ -34,53 +34,15 @@
 				</tr>
 			</tbody>
 		</table>
-
-
-
 		<div class="btns">
-
-			<button class="hover:underline" type="button" onclick="history.back();">BACK</button>
-
-
-			<c:choose>
-				<c:when test="${loginedMemberCanModifyRd !=null}">
-					<a class="modify-link" href="../article/modify?id=${article.id }">MODIFY</a>
-					<a class="delete" href="../article/doDelete?id=${article.id }">DELETE</a>
-				</c:when>
-				<c:otherwise>
-
-				</c:otherwise>
-			</c:choose>
-
-
-
-
-
-
-
-			<%-- 			<c:choose> --%>
-			<%-- 				<c:when test="${empty loginedMemberCanModifyRd}"> --%>
-			<!-- 					<li class="nav-item"><a class="nav-link" href="/loginForm">LOGIN</a></li> -->
-			<!-- 					<li class="nav-item"><a class="nav-link" href="/joinForm">SIGNUP</a></li> -->
-			<%-- 				</c:when> --%>
-			<%-- 				<c:otherwise> --%>
-			<!-- <!-- 					<li class="nav-item"><a class="nav-link" href="/boards/writeForm">글쓰기</a></li> -->
-			-->
-
-			<%-- 					<a class="modify-link" href="../article/modify?id=${article.id }">MODIFY</a> --%>
-			<%-- 					<a class="delete" href="../article/doDelete?id=${article.id }">DELETE</a> --%>
-
-			<%-- 				</c:otherwise> --%>
-			<%-- 			</c:choose> --%>
-
-			<%-- 			<a class="modify-link" href="../article/modify?id=${article.id }">MODIFY</a> --%>
-			<%-- 			<a class="delete" href="../article/doDelete?id=${article.id }">DELETE</a> --%>
+			<button class="hover:underline" type="button" onclick="history.back();">뒤로가기</button>
+			<c:if test="${article.userCanModify }">
+				<a href="../article/modify?id=${article.id }">수정</a>
+			</c:if>
+			<a href="../article/doDelete?id=${article.id }">삭제</a>
 		</div>
 	</div>
 </section>
-
-
-
 
 
 

@@ -29,22 +29,19 @@ public class UsrArticleController {
 
 	@RequestMapping("/usr/article/detail")
 	public String showDetail(HttpSession httpSession, Model model, int id) {
-		
 		boolean isLogined = false;
 		int loginedMemberId = 0;
-		
-		
-		if(httpSession.getAttribute("loginedMemberId") != null) {
+
+		if (httpSession.getAttribute("loginedMemberId") != null) {
 			isLogined = true;
 			loginedMemberId = (int) httpSession.getAttribute("loginedMemberId");
 		}
-		
+
 		Article article = articleService.getForPrintArticle(loginedMemberId, id);
-		
+
 		model.addAttribute("article", article);
-		
+
 		return "usr/article/detail";
-		
 	}
 
 	@RequestMapping("/usr/article/list")
@@ -89,9 +86,9 @@ public class UsrArticleController {
 	}
 
 	// 로그인 체크 -> 유무 체크 -> 권한 체크 -> 수정
-	@RequestMapping("/usr/article/modify")
-//	@ResponseBody
-	public String doModify(Model model, HttpSession httpSession, int id, String title, String body) {
+	@RequestMapping("/usr/article/doModify")
+	@ResponseBody
+	public ResultData<Integer> doModify(HttpSession httpSession, int id, String title, String body) {
 
 		boolean isLogined = false;
 		int loginedMemberId = 0;
@@ -102,26 +99,20 @@ public class UsrArticleController {
 		}
 
 		if (isLogined == false) {
-			return "로그인 후 이용해주세요";
-//			return ResultData.from("F-A", "로그인 후 이용해주세요");
+			return ResultData.from("F-A", "로그인 후 이용해주세요");
 		}
 
 		Article article = articleService.getArticle(id);
 
 		if (article == null) {
-			return "존재하지 않는 글입니다";
-//			return ResultData.from("F-1", Ut.f("%d번 글은 존재하지 않습니다", id), "id", id);
+			return ResultData.from("F-1", Ut.f("%d번 글은 존재하지 않습니다", id), "id", id);
 		}
 
-		ResultData loginedMemberCanModifyRd = articleService.loginedMemberCanModify(loginedMemberId, article);
-		
+		ResultData loginedMemberCanModifyRd = articleService.userCanModify(loginedMemberId, article);
+
 		articleService.modifyArticle(id, title, body);
-		
-		model.addAttribute("loginedMemberCanModifyRd", loginedMemberCanModifyRd); // 맞나??
 
-
-		return "usr/article/detail";
-//		return ResultData.from(loginedMemberCanModifyRd.getResultCode(), loginedMemberCanModifyRd.getMsg(), "id", id);
+		return ResultData.from(loginedMemberCanModifyRd.getResultCode(), loginedMemberCanModifyRd.getMsg(), "id", id);
 	}
 
 	// 로그인 체크 -> 유무 체크 -> 권한 체크 -> 삭제
