@@ -21,6 +21,13 @@ public class ArticleService {
 	}
 
 	// 서비스 메서드
+	public Article getForPrintArticle(int loginedMemberId, int id) {
+		
+//		Article article = articleRepository.getForPrintArticle(id);
+		
+		return null;
+	}
+	
 	public ResultData<Integer> writeArticle(int memberId, String title, String body) {
 		articleRepository.writeArticle(memberId, title, body);
 
@@ -53,5 +60,6 @@ public class ArticleService {
 
 		return ResultData.from("S-1", Ut.f("%d번 글을 수정했습니다", article.getId()));
 	}
+
 
 }
