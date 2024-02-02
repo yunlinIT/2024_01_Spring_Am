@@ -3,6 +3,9 @@ package com.example.demo.util;
 import java.lang.reflect.Array;
 import java.util.Map;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+
 public class Ut {
 
 	public static String f(String format, Object... args) {
@@ -76,5 +79,7 @@ public class Ut {
 				</script>
 				""", resultMsg, replaceUri);
 	}
+
+		
 
 }
