@@ -20,7 +20,7 @@
 	<header>
 		<div class="h-20 flex mx-auto items-center text-3xl">
 		<a href="/" class="logo flex flex-ai-c">
-			<img src="https://velog.velcdn.com/images/yunlinit/post/ff1000cf-9303-4287-b216-ef9327cce7af/image.png" alt="">
+			<img src="https://velog.velcdn.com/images/yunlinit/post/6f3f10f4-e31c-499b-a73a-bad0dbc07a6f/image.png" alt="">
 		</a>
 			<div class="flex-grow"></div>
 			<ul class="flex">
@@ -36,5 +36,5 @@
 			</ul>
 		</div>
 	</header>
-	<h1 style="font-size: 2rem;">${pageTitle }</h1>
+	<h1 style="font-size: 1.2rem;">${pageTitle }</h1>
 	<hr />

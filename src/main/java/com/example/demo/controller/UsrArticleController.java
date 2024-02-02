@@ -15,6 +15,7 @@ import com.example.demo.vo.ResultData;
 import com.example.demo.vo.Rq;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class UsrArticleController {
@@ -27,6 +28,14 @@ public class UsrArticleController {
 	}
 
 	// 액션 메서드
+	
+	@RequestMapping("/usr/article/modify")
+
+	public String showModify(HttpSession httpSession) {
+
+		return "usr/article/modify";
+	}
+	
 
 	@RequestMapping("/usr/article/detail")
 	public String showDetail(HttpServletRequest req, Model model, int id) {
