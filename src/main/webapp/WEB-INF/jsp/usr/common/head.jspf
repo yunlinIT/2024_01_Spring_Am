@@ -15,27 +15,26 @@
 
 <!-- 제이쿼리 불러오기 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
 </head>
 <body>
 	<header>
-		
-		<header>
 		<div class="h-20 flex mx-auto items-center text-3xl">
-			<a href="/"><img src="https://velog.velcdn.com/images/yunlinit/post/ff1000cf-9303-4287-b216-ef9327cce7af/image.png" alt=""></a>
+		<a href="/" class="logo flex flex-ai-c">
+			<img src="https://velog.velcdn.com/images/yunlinit/post/ff1000cf-9303-4287-b216-ef9327cce7af/image.png" alt="">
+		</a>
 			<div class="flex-grow"></div>
 			<ul class="flex">
 				<li><a class="hover:underline" href="/">HOME</a></li>
 				<li><a class="hover:underline" href="../article/list">LIST</a></li>
-				<li><a class="hover:underline" href="../member/login">LOGIN</a></li>
-				<li><a class="hover:underline" href="../member/logout">LOGOUT</a></li>
-				<li><a class="hover:underline" href="../member/logout">JOIN</a></li>
+				<c:if test="${!rq.isLogined() }">
+					<li><a class="hover:underline" href="../member/login">LOGIN</a></li>
+				</c:if>
+				<c:if test="${rq.isLogined() }">
+					<li><a onclick="if(confirm('로그아웃 할래?') == false) return false;" class="hover:underline"
+							href="../member/doLogout">LOGOUT</a></li>
+				</c:if>
 			</ul>
 		</div>
 	</header>
-
-	</header>
-	<h1>${pageTitle }</h1>
+	<h1 style="font-size: 2rem;">${pageTitle }</h1>
 	<hr />
-	<br>
-	<br>
