@@ -96,4 +96,6 @@ li > a:hover {
   color: LightGrey;
   text-decoration: underline;
 }
-
+.putlogin > form > div > input {
+	border: 1px solid black;
+}
