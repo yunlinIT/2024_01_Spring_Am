@@ -8,7 +8,7 @@
 	<div class="mx-auto">
 	
 	
-<a class="hover:underline" href="modify">	글쓰기</a>
+<a class="hover:underline" href="write">글쓰기</a>
 
 		<table class="table-box-1" border="1">
 			<colgroup>

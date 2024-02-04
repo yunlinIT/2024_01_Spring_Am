@@ -36,6 +36,13 @@ public class UsrArticleController {
 		return "usr/article/modify";
 	}
 	
+	@RequestMapping("/usr/article/write")
+
+	public String showWrite(HttpSession httpSession) {
+
+		return "usr/article/write";
+	}
+	
 
 	@RequestMapping("/usr/article/detail")
 	public String showDetail(HttpServletRequest req, Model model, int id) {

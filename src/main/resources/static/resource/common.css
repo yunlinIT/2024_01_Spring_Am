@@ -63,6 +63,13 @@ header>div>ul>li {
 
 /* 내 커스텀  */
 
+header>div img {
+	margin-left: 14px;
+}
+
+body>h1 {
+	margin-left: 16px;
+}
 
 a {
 	text-decoration: none;
