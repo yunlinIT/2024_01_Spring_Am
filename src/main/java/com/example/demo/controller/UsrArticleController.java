@@ -21,6 +21,9 @@ import jakarta.servlet.http.HttpSession;
 public class UsrArticleController {
 
 	@Autowired
+	private Rq rq;
+
+	@Autowired
 	private ArticleService articleService;
 
 	public UsrArticleController() {
