@@ -1,5 +1,4 @@
 /* 폰트 */
-
 @font-face {
 	font-family: 'LotteMartDream';
 	font-style: normal;
@@ -41,68 +40,28 @@ html>body {
 	font-family: 'LotteMartDream', sans-serif;
 }
 
-
-
-
-
 /* 라이브러리 */
 
-
-/* 강사님 커스텀 */
-
+/* 커스텀 */
 header>div>ul>li {
 	margin-right: 30px;
+}
+
+.login-box>tbody>tr>td>input {
+	border: 1px solid black;
+	padding-left: 10px;
+}
+
+.login-box>tbody>tr:nth-child(3)>td>input {
+	padding-left: 0;
+}
+
+.join-box>tbody>tr:nth-child(7)>td>input  {
+	padding-left: 0;
 }
 
 .table-box-1 th, .table-box-1 td {
 	border: 1px solid black;
 	padding: 10px;
 	text-align: center;
-}
-
-
-/* 내 커스텀  */
-
-header>div img {
-	margin-left: 14px;
-}
-
-body>h1 {
-	margin-left: 16px;
-}
-
-a {
-	text-decoration: none;
-}
-
-li {
-	list-style: none;
-}
-
-ul {
-  text-align: center;
-}
-
-li {
-  /*링크를 담을 범위, 이 범위 내의 text는 가운데정렬, inline-block*/
-  height: 40px;
-  width: 120px;
-  display: inline-block;
-  text-align: center;
-}
-
-li > a {
-
-  text-decoration: none;
-  color: black;
-  font-size: 18px;
-  display: block; /*nav의 손자인 a의 범위를 부모(section)의 가로길이만큼 지정해주기*/
-}
-
-li > a:hover {
-  color: LightGrey;
-  text-decoration: underline;
-}
-.putlogin > form > div > input {
-	border: 1px solid black;
 }
