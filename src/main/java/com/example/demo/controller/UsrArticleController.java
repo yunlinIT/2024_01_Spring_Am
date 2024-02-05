@@ -50,12 +50,9 @@ public class UsrArticleController {
 
 		return "usr/article/list";
 	}
-	
-	@RequestMapping("/usr/article/write")
-	public String showWrite(Model model) {
-		List<Article> articles = articleService.getArticles();
 
-		model.addAttribute("articles", articles);
+	@RequestMapping("/usr/article/write")
+	public String showJoin(HttpServletRequest req) {
 
 		return "usr/article/write";
 	}
@@ -79,8 +76,8 @@ public class UsrArticleController {
 
 		Article article = articleService.getArticle(id);
 
-//		return Ut.jsReplace("S-1", id +"번 글이 등록되었습니다", "../article/detail?id=" + id);
-		return Ut.jsReplace("S-1", id +"번 글이 등록되었습니다", "../article/list");
+		return Ut.jsReplace(writeArticleRd.getResultCode(), writeArticleRd.getMsg(), "../article/detail?id=" + id);
+
 	}
 
 	@RequestMapping("/usr/article/modify")
