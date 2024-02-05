@@ -5,12 +5,11 @@
 
 
 <section class="mt-8 text-xl px-4">
-	<div class="mx-auto">
+	<div class="mx-auto overflow-x-auto">
 	
+	<a class="btn btn-outline mb-5" href="write">글쓰기</a>
 	
-<a class="hover:underline" href="write">글쓰기</a>
-
-		<table class="table-box-1" border="1">
+		<table class="table-box-1 table table-zebra" border="1">
 			<colgroup>
 				<col style="width: 10%" />
 				<col style="width: 20%" />

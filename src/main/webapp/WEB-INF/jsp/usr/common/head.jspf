@@ -10,6 +10,9 @@
 <!-- 테일윈드 불러오기 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" />
 
+<!-- daisy ui 불러오기 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/daisyui/4.6.1/full.css" />
+
 <!-- 폰트어썸 불러오기 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 
@@ -18,10 +21,9 @@
 </head>
 <body>
 	<header>
+	
 		<div class="h-20 flex mx-auto items-center text-3xl">
-			<a href="/" class="logo flex flex-ai-c">
-				<img src="https://velog.velcdn.com/images/yunlinit/post/6f3f10f4-e31c-499b-a73a-bad0dbc07a6f/image.png" alt="">
-			</a>
+			<a href="/">LOGO</a>
 			<div class="flex-grow"></div>
 			<ul class="flex">
 				<li><a class="hover:underline" href="/">HOME</a></li>
@@ -37,5 +39,5 @@
 			</ul>
 		</div>
 	</header>
-	<h1 style="font-size: 1.2rem;">${pageTitle }</h1>
+	<h1 style="font-size: 2rem;">${pageTitle }</h1>
 	<hr />
