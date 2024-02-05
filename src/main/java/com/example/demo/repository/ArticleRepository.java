@@ -45,12 +45,12 @@ public interface ArticleRepository {
 	@Delete("DELETE FROM article WHERE id = #{id}")
 	public void deleteArticle(int id);
 
-	@Update("""
-			UPDATE article 
+	@Update("""	
+			UPDATE article AS A
 			SET updateDate = NOW(), 
-			title = #{title}, 
+			title = #{title},
 			`body` = #{body} 
-			WHERE id = #{id}
+			WHERE A.id = #{id}
 			""")
 	public void modifyArticle(int id, String title, String body);
 

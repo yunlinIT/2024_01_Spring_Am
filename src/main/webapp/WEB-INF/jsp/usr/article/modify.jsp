@@ -8,7 +8,7 @@
 	<div class="mx-auto">
 		<form action="../article/doModify" method="POST">
 		
-		<input type="hidden" value="${article.id }" name="id" />
+		<input type="hidden" value="${article.id }" name="id" type="number"/>
 			<table class="login-box table-box-1" border="1">
 				<tbody>
 					<tr>
