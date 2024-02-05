@@ -47,10 +47,11 @@ public interface ArticleRepository {
 
 	@Update("""	
 			UPDATE article AS A
-			SET updateDate = NOW(), 
+			SET updateDate = NOW(),
 			title = #{title},
 			`body` = #{body} 
 			WHERE A.id = #{id}
+				
 			""")
 	public void modifyArticle(int id, String title, String body);
 

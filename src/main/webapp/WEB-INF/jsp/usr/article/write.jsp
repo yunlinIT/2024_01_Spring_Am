@@ -9,7 +9,7 @@
 		<form action="../article/doWrite" method="POST">
 		
 		<input type="hidden" value="${article.id }" name="id" />
-			<table class="login-box table-box-1" border="1">
+			<table class="write-box table-box-1" border="1">
 				<tbody>
 					<tr>
 						<th>제목</th>
