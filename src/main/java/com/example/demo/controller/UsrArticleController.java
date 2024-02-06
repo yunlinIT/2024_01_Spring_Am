@@ -40,7 +40,7 @@ public class UsrArticleController {
 	
 	@RequestMapping("/usr/article/searchlist")
 	public String showSearchList(HttpServletRequest req, Model model, @RequestParam(defaultValue = "1") int boardId,
-			@RequestParam(defaultValue = "1") int page, String searchKeyword) {
+			@RequestParam(defaultValue = "1") int page, String search) {
 
 		Rq rq = (Rq) req.getAttribute("rq");
 
@@ -75,7 +75,7 @@ public class UsrArticleController {
 		model.addAttribute("pagesCount", pagesCount);
 		model.addAttribute("articlesCount", articlesCount);
 		model.addAttribute("articles", articles);
-		model.addAttribute("searchKeyword", searchKeyword);
+		model.addAttribute("search", search);
 
 		return "usr/article/searchlist";
 	}
