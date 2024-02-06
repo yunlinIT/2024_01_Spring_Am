@@ -97,6 +97,10 @@ public class ArticleService {
 
 		int limitFrom = (page - 1) * itemsInAPage;
 		int limitTake = itemsInAPage;
+		
+	
+	
+		
 
 		return articleRepository.getForPrintArticles(boardId, limitFrom, limitTake);
 	}
