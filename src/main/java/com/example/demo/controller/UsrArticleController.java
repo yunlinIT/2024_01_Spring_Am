@@ -36,6 +36,50 @@ public class UsrArticleController {
 	}
 
 	// 액션 메서드
+	
+	
+	@RequestMapping("/usr/article/searchlist")
+	public String showSearchList(HttpServletRequest req, Model model, @RequestParam(defaultValue = "1") int boardId,
+			@RequestParam(defaultValue = "1") int page, String searchKeyword) {
+
+		Rq rq = (Rq) req.getAttribute("rq");
+
+		Board board = boardService.getBoardById(boardId);
+
+		int articlesCount = articleService.getArticlesCount(boardId);
+
+		if (board == null) {
+			return rq.historyBackOnView("없는 게시판이야");
+		}
+
+		// 한페이지에 글 10개씩이야
+		// 글 20개 -> 2 page
+		// 글 24개 -> 3 page
+		int itemsInAPage = 10;
+
+		int pagesCount = (int) Math.ceil(articlesCount / (double) itemsInAPage);
+
+		List<Article> articles = articleService.getForPrintArticles(boardId, itemsInAPage, page);
+		
+		
+
+//		for(Article article : articles) {
+//			if (article.getTitle().contains(searchKeyword)) {
+//				forPrintArticles.add(article);
+//		}
+
+
+		model.addAttribute("board", board);
+		model.addAttribute("boardId", boardId);
+		model.addAttribute("page", page);
+		model.addAttribute("pagesCount", pagesCount);
+		model.addAttribute("articlesCount", articlesCount);
+		model.addAttribute("articles", articles);
+		model.addAttribute("searchKeyword", searchKeyword);
+
+		return "usr/article/searchlist";
+	}
+
 
 	@RequestMapping("/usr/article/list")
 	public String showList(HttpServletRequest req, Model model, @RequestParam(defaultValue = "1") int boardId,
@@ -59,6 +103,14 @@ public class UsrArticleController {
 		int pagesCount = (int) Math.ceil(articlesCount / (double) itemsInAPage);
 
 		List<Article> articles = articleService.getForPrintArticles(boardId, itemsInAPage, page);
+		
+		
+//
+//		for(Article article : articles) {
+//			if (article.getTitle().contains(searchKeyword)) {
+//				forPrintArticles.add(article);
+//		}
+
 
 		model.addAttribute("board", board);
 		model.addAttribute("boardId", boardId);

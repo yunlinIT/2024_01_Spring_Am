@@ -110,5 +110,14 @@ public interface ArticleRepository {
 			</script>
 			""")
 	public List<Article> getForPrintArticles(int boardId, int limitFrom, int limitTake);
+	
+	@Select("""
+			SELECT A.*, M.nickname AS extra__writer
+			FROM article AS A
+			INNER JOIN `member` AS M
+			ON A.memberId = M.id
+			ORDER BY A.id DESC
+			""")
+	public List<Article> getArticlesbySearchKeyWord();
 
 }

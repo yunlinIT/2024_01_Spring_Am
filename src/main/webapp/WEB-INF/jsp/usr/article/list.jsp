@@ -35,6 +35,28 @@
 			</tbody>
 		</table>
 	</div>
+	
+	
+	<section class="mt-8 text-xl px-4 flex justify-center mt-3">
+	<div class="mx-auto">
+		<form action="../article/searchlist?search=${search}" method="GET">
+			<table class="search-box table-box-1" border="1">
+				<tbody>
+					<tr>
+						<td><input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+							placeholder="검색어를 입력해주세요" name="search" /></td>
+							<td><input class="btn btn-outline btn-info" type="submit" value="검색" /></td>
+					</tr>
+					
+				</tbody>
+			</table>
+		</form>
+	</div>
+</section>
+	
+	
+	
+	
 	<!-- 	동적 페이징 -->
 	<div class="pagination flex justify-center mt-3">
 		<c:set var="paginationLen" value="3" />
