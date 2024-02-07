@@ -6,34 +6,50 @@
 
 <section class="mt-8 text-xl px-4">
 	<div class="mx-auto overflow-x-auto">
-		<div class="badge badge-outline">${articlesCount }개</div>
-		<table class="table-box-1 table" border="1">
-			<colgroup>
-				<col style="width: 10%" />
-				<col style="width: 20%" />
-				<col style="width: 60%" />
-				<col style="width: 10%" />
-			</colgroup>
-			<thead>
-				<tr>
-					<th>번호</th>
-					<th>날짜</th>
-					<th>제목</th>
-					<th>작성자</th>
-				</tr>
-			</thead>
-			<tbody>
+		<div class="mb-4 flex">
+			<div class="badge badge-outline">${articlesCount }개</div>
+			<div class="flex-grow"></div>
+			<form action="">
+				<input type="hidden" name="boardId" value="${param.boardId }" />
+				<select data-value="${param.searchKeywordTypeCode }" class="select select-bordered select-sm w-full max-w-xs"
+					name="searchKeywordTypeCode">
+					<option value="title">title</option>
+					<option value="body">body</option>
+					<option value="title,body">title+body</option>
+				</select>
+				<input value="${param.searchKeyword }" name="searchKeyword" type="text" placeholder="What is your searchKeyword?"
+					class="input-sm input input-bordered w-48 max-w-xs" />
+				<button class="btn btn-ghost btn-sm" type="submit">검색</button>
+			</form>
+		</div>
+	</div>
+	<table class="table-box-1 table" border="1">
+		<colgroup>
+			<col style="width: 10%" />
+			<col style="width: 20%" />
+			<col style="width: 60%" />
+			<col style="width: 10%" />
+		</colgroup>
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th>날짜</th>
+				<th>제목</th>
+				<th>작성자</th>
+			</tr>
+		</thead>
+		<tbody>
 
-				<c:forEach var="article" items="${articles }">
-					<tr class="hover">
-						<td>${article.id }</td>
-						<td>${article.regDate.substring(0,10) }</td>
-						<td><a href="detail?id=${article.id }">${article.title }</a></td>
-						<td>${article.extra__writer }</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
+			<c:forEach var="article" items="${articles }">
+				<tr class="hover">
+					<td>${article.id }</td>
+					<td>${article.regDate.substring(0,10) }</td>
+					<td><a href="detail?id=${article.id }">${article.title }</a></td>
+					<td>${article.extra__writer }</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
 	</div>
 
 	<!-- 	동적 페이징 -->
@@ -62,39 +78,15 @@
 
 	</div>
 
-
-	<!-- 	<!-- 	원래 페이징 -->
-	-->
-	<!-- 	<div class="pagination flex justify-center mt-3"> -->
-	<!-- 		<div class="btn-group"> -->
-	<%-- 			<c:forEach begin="1" end="${pagesCount }" var="i"> --%>
-	<%-- 				<a class="btn btn-sm ${param.page == i ? 'btn-active' : '' }" href="?page=${i }&boardId=${param.boardId}">${i }</a> --%>
-	<%-- 			</c:forEach> --%>
-	<!-- 		</div> -->
-	<!-- 	</div> -->
-
-<!-- 	<!-- 	검색 박스 --> -->
-<!-- 	<section class="mt-8 text-xl px-4 flex justify-center mt-3"> -->
-<!-- 		<div class="mx-auto"> -->
-<%-- 			<form action="../article/list?searchKeyword=${searchKeyword}" method="GET"> --%>
-<!-- 				<table class="search-box table-box-1" border="1"> -->
-<!-- 					<tbody> -->
-<!-- 						<tr> -->
-<!-- 							<td><input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text" -->
-<!-- 								placeholder="검색어를 입력해주세요" name="searchKeyword" /></td> -->
-<!-- 							<td><input class="btn btn-outline btn-info" type="submit" value="검색" /></td> -->
-<!-- 						</tr> -->
-
-<!-- 					</tbody> -->
-<!-- 				</table> -->
-<!-- 			</form> -->
-<!-- 		</div> -->
-<!-- 	</section> -->
-
+	<!-- 	원래 페이징 -->
+	<div class="pagination flex justify-center mt-3">
+		<div class="btn-group">
+			<c:forEach begin="1" end="${pagesCount }" var="i">
+				<a class="btn btn-sm ${param.page == i ? 'btn-active' : '' }" href="?page=${i }&boardId=${param.boardId}">${i }</a>
+			</c:forEach>
+		</div>
+	</div>
 </section>
-
-
-
 
 
 
