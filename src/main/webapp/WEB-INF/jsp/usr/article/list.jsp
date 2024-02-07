@@ -35,38 +35,66 @@
 			</tbody>
 		</table>
 	</div>
-	
+
 	<!-- 	동적 페이징 -->
 	<div class="pagination flex justify-center mt-3">
 		<c:set var="paginationLen" value="3" />
 		<c:set var="startPage" value="${page -  paginationLen  >= 1 ? page - paginationLen : 1}" />
 		<c:set var="endPage" value="${page +  paginationLen  <= pagesCount ? page + paginationLen : pagesCount}" />
 
+		<c:set var="baseUri" value="?boardId=${boardId }" />
+		<c:set var="baseUri" value="${baseUri }&searchKeywordTypeCode=${searchKeywordTypeCode}" />
+		<c:set var="baseUri" value="${baseUri }&searchKeyword=${searchKeyword}" />
+
 		<c:if test="${startPage > 1 }">
-			<a class="btn btn-sm" href="?page=1&boardId=${boardId }">1</a>
+			<a class="btn btn-sm" href="${baseUri }&page=1">1</a>
 			<button class="btn btn-sm btn-disabled">...</button>
 		</c:if>
 
 		<c:forEach begin="${startPage }" end="${endPage }" var="i">
-			<a class="btn btn-sm ${param.page == i ? 'btn-active' : '' }" href="?page=${i }&boardId=${boardId}">${i }</a>
+			<a class="btn btn-sm ${param.page == i ? 'btn-active' : '' }" href="${baseUri }&page=${i }">${i }</a>
 		</c:forEach>
 
 		<c:if test="${endPage < pagesCount }">
 			<button class="btn btn-sm btn-disabled">...</button>
-			<a class="btn btn-sm" href="?page=${pagesCount }&boardId=${boardId }">${pagesCount }</a>
+			<a class="btn btn-sm" href="${baseUri }&page=${pagesCount }">${pagesCount }</a>
 		</c:if>
 
 	</div>
 
-	<!-- 	원래 페이징 -->
-	<div class="pagination flex justify-center mt-3">
-		<div class="btn-group">
-			<c:forEach begin="1" end="${pagesCount }" var="i">
-				<a class="btn btn-sm ${param.page == i ? 'btn-active' : '' }" href="?page=${i }&boardId=${param.boardId}">${i }</a>
-			</c:forEach>
-		</div>
-	</div>
+
+	<!-- 	<!-- 	원래 페이징 -->
+	-->
+	<!-- 	<div class="pagination flex justify-center mt-3"> -->
+	<!-- 		<div class="btn-group"> -->
+	<%-- 			<c:forEach begin="1" end="${pagesCount }" var="i"> --%>
+	<%-- 				<a class="btn btn-sm ${param.page == i ? 'btn-active' : '' }" href="?page=${i }&boardId=${param.boardId}">${i }</a> --%>
+	<%-- 			</c:forEach> --%>
+	<!-- 		</div> -->
+	<!-- 	</div> -->
+
+<!-- 	<!-- 	검색 박스 --> -->
+<!-- 	<section class="mt-8 text-xl px-4 flex justify-center mt-3"> -->
+<!-- 		<div class="mx-auto"> -->
+<%-- 			<form action="../article/list?searchKeyword=${searchKeyword}" method="GET"> --%>
+<!-- 				<table class="search-box table-box-1" border="1"> -->
+<!-- 					<tbody> -->
+<!-- 						<tr> -->
+<!-- 							<td><input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text" -->
+<!-- 								placeholder="검색어를 입력해주세요" name="searchKeyword" /></td> -->
+<!-- 							<td><input class="btn btn-outline btn-info" type="submit" value="검색" /></td> -->
+<!-- 						</tr> -->
+
+<!-- 					</tbody> -->
+<!-- 				</table> -->
+<!-- 			</form> -->
+<!-- 		</div> -->
+<!-- 	</section> -->
+
 </section>
+
+
+
 
 
 
