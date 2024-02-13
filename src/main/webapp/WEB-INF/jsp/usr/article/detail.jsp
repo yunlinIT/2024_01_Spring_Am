@@ -17,6 +17,7 @@
 		const id = ${article.id};
 		const hitCount = localStorage.getItem("hitCount");
 
+		
 		//새로고침 여부 확인
 		if (hitId == id && hitCount == 1) {
 			return;
@@ -34,6 +35,7 @@
 		}, 'json');
 	}
 
+	
 	$(function() {
 		// 		ArticleDetail__doIncreaseHitCount();
 		setTimeout(ArticleDetail__doIncreaseHitCount, 2000);
