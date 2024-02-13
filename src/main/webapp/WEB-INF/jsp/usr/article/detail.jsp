@@ -10,7 +10,22 @@
 </script>
 
 <script>
+
 	function ArticleDetail__doIncreaseHitCount() {
+		
+		const hitId = localStorage.getItem("hitId");
+		const id = ${article.id};
+		const hitCount = localStorage.getItem("hitCount");
+
+		//새로고침 여부 확인
+		if (hitId == id && hitCount == 1) {
+			return;
+		}
+
+		//localStorage에 현재 url 저장
+		localStorage.setItem("hitId", id);
+		localStorage.setItem("hitCount", 1);
+
 		$.get('../article/doIncreaseHitCountRd', {
 			id : params.id,
 			ajaxMode : 'Y'
@@ -20,7 +35,7 @@
 	}
 
 	$(function() {
-// 		ArticleDetail__doIncreaseHitCount();
+		// 		ArticleDetail__doIncreaseHitCount();
 		setTimeout(ArticleDetail__doIncreaseHitCount, 2000);
 	})
 </script>
