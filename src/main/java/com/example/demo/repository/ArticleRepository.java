@@ -120,6 +120,21 @@ public interface ArticleRepository {
 			WHERE id = #{id}
 			""")
 	public int getArticleHitCount(int id);
+	
+	@Update("""
+			UPDATE article
+			SET likeCount = likeCount + 1
+			WHERE id = #{id}
+			""")
+	public int increaseLikeCount(int id);
+	
+	
+	@Select("""
+			SELECT likeCount
+			FROM article
+			WHERE id = #{id}
+			""")
+	public int getArticleLikeCount(int id);
 
 	@Select("""
 			<script>
