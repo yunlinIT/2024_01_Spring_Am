@@ -35,31 +35,7 @@
 </script>
 
 
-<script>
-	function ArticleDetail__doIncreaseLikeCount() {
-		
-		const localStorageKey = 'article__' + params.id + '__alreadyLike';
 
-		if (localStorage.getItem(localStorageKey)) {
-			return;
-		}
-
-		localStorage.setItem(localStorageKey, true);
-
-		$.get('../article/doIncreaseLikeCountRd', {
-			id : params.id,
-			ajaxMode : 'Y'
-		}, function(data) {
-			$('.article-detail__like-count').empty().html(data.data1);
-		}, 'json');
-	}
-
-// 	$(function() {
-// 		// 		ArticleDetail__doIncreaseHitCount();
-// 		setTimeout(ArticleDetail__doIncreaseHitCount, 2000);
-// 	})
-
-</script>
 
 
 
@@ -96,10 +72,6 @@
 					<td><span class="article-detail__hit-count">${article.hitCount }</span></td>
 				</tr>
 				
-				<tr>
-					<th><a class="btn btn-outline" href="../article/doIncreaseLikeCountRd?id=${article.id }">좋아요</a></th>
-					<td><span class="article-detail__like-count">${article.likeCount }</span></td>
-				</tr>
 			</tbody>
 		</table>
 		<div class="btns mt-5">
