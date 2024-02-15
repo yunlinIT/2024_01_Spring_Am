@@ -7,19 +7,13 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Article {
+public class ReactionPoint {
 	private int id;
 	private String regDate;
 	private String updateDate;
 	private int memberId;
-	private String title;
-	private String body;
-	private int hitCount;
-	private int goodReactionPoint;
-	private int badReactionPoint;
-
-	private String extra__writer;
-
-	private boolean userCanModify;
-	private boolean userCanDelete;
+	private int relTypeCode;
+	private int relId;
+	private int point;
+	
 }
