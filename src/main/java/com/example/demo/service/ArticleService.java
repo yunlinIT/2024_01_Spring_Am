@@ -104,23 +104,6 @@ public class ArticleService {
 	public Object getArticleHitCount(int id) {
 		return articleRepository.getArticleHitCount(id);
 	}
-	
-//	public ResultData increaseLikeCount(int id) {
-//		int affectedRow = articleRepository.increaseLikeCount(id);
-//
-//		if (affectedRow == 0) {
-//			return ResultData.from("F-1", "해당 게시물 없음", "id", id);
-//		}
-//
-//		return ResultData.from("S-1", "해당 게시물 좋아요수 증가", "id", id);
-//
-//	}
-//	
-//	public Object getArticleLikeCount(int id) {
-//		return articleRepository.getArticleLikeCount(id);
-//	}
-	
-
 
 	public List<Article> getForPrintArticles(int boardId, int itemsInAPage, int page, String searchKeywordTypeCode,
 			String searchKeyword) {
@@ -133,6 +116,16 @@ public class ArticleService {
 
 		return articleRepository.getForPrintArticles(boardId, limitFrom, limitTake, searchKeywordTypeCode,
 				searchKeyword);
+	}
+
+	public ResultData increaseGoodReactionPoint(int relId) {
+		int affectedRow = articleRepository.increaseGoodReactionPoint(relId);
+
+		if (affectedRow == 0) {
+			return ResultData.from("F-1", "없는 게시물");
+		}
+
+		return ResultData.from(null, null);
 	}
 
 }
