@@ -169,7 +169,7 @@
 	});
 </script>
 
-
+<!-- 게시글 상세내용 -->
 <section class="mt-8 text-xl px-4">
 	<div class="mx-auto">
 		<table class="table-box-1" border="1">
@@ -209,9 +209,7 @@
 				</tr>
 				<tr>
 					<th>조회수</th>
-					<td>
-						<span class="article-detail__hit-count">${article.hitCount }</span>
-					</td>
+					<td><span class="article-detail__hit-count">${article.hitCount }</span></td>
 				</tr>
 				<tr>
 					<th>제목</th>
@@ -224,16 +222,85 @@
 
 			</tbody>
 		</table>
-		<div class="btns mt-5">
-			<button class="btn btn-outline" type="button" onclick="history.back();">뒤로가기</button>
-			<c:if test="${article.userCanModify }">
-				<a class="btn btn-outline" href="../article/modify?id=${article.id }">수정</a>
-			</c:if>
-			<c:if test="${article.userCanDelete }">
-				<a class="btn btn-outline" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
-					href="../article/doDelete?id=${article.id }">삭제</a>
-			</c:if>
+
+		<!-- 댓글목록 -->
+		<section class="mt-8 text-xl px-4">
+			<div class="mx-auto overflow-x-auto">
+				<div class="mb-4 flex">
+					<div class="badge badge-outline">댓글 ${articlesCount }0개</div>
+					<div class="flex-grow"></div>
+				</div>
+			</div>
+			<table class="table-box-1 table" border="1">
+				<colgroup>
+					<col style="width: 10%" />
+					<col style="width: 10%" />
+					<col style="width: 60%" />
+					<col style="width: 10%" />
+					<col style="width: 10%" />
+				</colgroup>
+				<thead>
+					<tr>
+						<th>작성자</th>
+						<th>날짜</th>
+						<th>댓글</th>
+						<th>좋아요</th>
+						<th>싫어요</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="reply" items="${replies }">
+						<tr>
+							<td>${reply.memberId }</td>
+							<td>${article.regDate.substring(0,10) }</td>
+							<td>${reply.body }</td>
+							<td>${reply.goodReactionPoint }</td>
+							<td>${reply.badReactionPoint }</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+	</div>
+
+	<!-- 댓글 작성 -->
+	<section class="reply mt-8 text-xl">
+		<div class="mx-auto">
+			<form action="../article/doReply" method="POST">
+				<label class="form-control w-full max-w-xs">
+					<div class="label">
+						<span class="label-text">댓글</span>
+					</div>
+					<div>
+
+						<input class="input input-bordered input-lg w-full max-w-xs" autocomplete="off" type="text"
+							placeholder="댓글을 남겨보세요" name="body" /> <input class="replybtn btn btn-outline btn-info mt-5" type="submit"
+							value="댓글등록" />
+					</div>
+				</label>
+			</form>
 		</div>
+	</section>
+
+
+
+
+
+
+
+
+
+
+	<!-- 		하단 버튼 -->
+	<div class="btns mt-5">
+		<button class="btn btn-outline" type="button" onclick="history.back();">뒤로가기</button>
+		<c:if test="${article.userCanModify }">
+			<a class="btn btn-outline" href="../article/modify?id=${article.id }">수정</a>
+		</c:if>
+		<c:if test="${article.userCanDelete }">
+			<a class="btn btn-outline" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
+				href="../article/doDelete?id=${article.id }">삭제</a>
+		</c:if>
+	</div>
 	</div>
 </section>
 

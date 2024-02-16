@@ -159,8 +159,8 @@ public class ArticleService {
 	}
 
 	public int getGoodRP(int relId) {
+		return articleRepository.getGoodRP(relId);
 	}
-	return articleRepository.getGoodRP(relId);
 
 	public int getBadRP(int relId) {
 		return articleRepository.getBadRP(relId);
