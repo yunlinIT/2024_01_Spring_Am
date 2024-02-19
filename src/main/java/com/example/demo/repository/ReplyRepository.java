@@ -18,6 +18,8 @@ public interface ReplyRepository {
 			regDate = NOW(),
 			updateDate = NOW(),
 			memberId = #{memberId},
+			relTypeCode = #{relTypeCode},
+			relId = #{relId},
 			`body` = #{body}
 			""")
 	public void doReply(int memberId, String body);
@@ -25,17 +27,7 @@ public interface ReplyRepository {
 	@Select("SELECT LAST_INSERT_ID()")
 	public int getLastInsertId();
 
-	
-	
-	
-//	@Select("""
-//			SELECT A.*, M.nickname AS extra__writer
-//			FROM article AS A
-//			INNER JOIN `member` AS M
-//			ON A.memberId = M.id
-//			ORDER BY A.id DESC
-//			""")
-	
+
 	
 	@Select("""
 			SELECT *

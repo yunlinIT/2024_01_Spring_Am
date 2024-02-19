@@ -244,8 +244,6 @@
 						<th>작성자</th>
 						<th>날짜</th>
 						<th>댓글</th>
-						<th>좋아요</th>
-						<th>싫어요</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -254,8 +252,6 @@
 							<td>${reply.memberId }</td>
 							<td>${article.regDate.substring(0,10) }</td>
 							<td>${reply.body }</td>
-							<td>${reply.goodReactionPoint }</td>
-							<td>${reply.badReactionPoint }</td>
 						</tr>
 					</c:forEach>
 				</tbody>

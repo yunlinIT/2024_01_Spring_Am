@@ -13,7 +13,5 @@ public class Reply {
 	private String updateDate;
 	private int memberId;
 	private String body;
-	private int goodReactionPoint;
-	private int badReactionPoint;
 
 }
