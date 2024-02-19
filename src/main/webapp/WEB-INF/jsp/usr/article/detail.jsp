@@ -209,9 +209,7 @@
 				</tr>
 				<tr>
 					<th>조회수</th>
-					<td>
-						<span class="article-detail__hit-count">${article.hitCount }</span>
-					</td>
+					<td><span class="article-detail__hit-count">${article.hitCount }</span></td>
 				</tr>
 				<tr>
 					<th>제목</th>
@@ -238,9 +236,74 @@
 </section>
 
 <section class="mt-5 px-3">
+
+	<c:if test="${rq.isLogined() }">
+		<form action="../reply/doWrite" method="POST">
+			<input type="hidden" name="relTypeCode" value="article" />
+			<input type="hidden" name="relId" value="${article.id }" />
+			<table class="write-box table-box-1" border="1">
+				<tbody>
+					<tr>
+						<th>내용</th>
+						<td>
+							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+								placeholder="내용을 입력해주세요" name="body" />
+						</td>
+					</tr>
+					<tr>
+						<th></th>
+						<td>
+							<input class="btn btn-outline btn-info" type="submit" value="댓글 작성" />
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</c:if>
+	<c:if test="${!rq.isLogined() }">
+		<a class="btn btn-outline btn-ghost" href="../member/login">LOGIN</a> 하고 댓글 써
+	</c:if>
+
 	<div class="mx-auto">
 		<h2>댓글 리스트(${repliesCount })</h2>
-		<div>${replies }</div>
+
+		<table class="table-box-1 table" border="1">
+			<colgroup>
+				<col style="width: 5%" />
+				<col style="width: 10%" />
+				<col style="width: 15%" />
+				<col style="width: 60%" />
+				<col style="width: 5%" />
+				<col style="width: 5%" />
+			</colgroup>
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>날짜</th>
+					<th>작성자</th>
+					<th>댓글</th>
+					<th>좋아요</th>
+					<th>싫어요</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<c:forEach var="reply" items="${replies }">
+						<td>${reply.id }</td>
+						<td>${reply.regDate.substring(0,10) }</td>
+						<td>${reply.extra__writer }</td>
+						<td>${reply.body }</td>
+						<td>${reply.goodReactionPoint }</td>
+						<td>${reply.badReactionPoint }</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+
+
+
+
+
 	</div>
 
 </section>
