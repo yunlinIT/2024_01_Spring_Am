@@ -234,9 +234,7 @@
 				</tr>
 				<tr>
 					<th>조회수</th>
-					<td>
-						<span class="article-detail__hit-count">${article.hitCount }</span>
-					</td>
+					<td><span class="article-detail__hit-count">${article.hitCount }</span></td>
 				</tr>
 				<tr>
 					<th>제목</th>
@@ -265,22 +263,17 @@
 <section class="mt-5 px-3">
 	<c:if test="${rq.isLogined() }">
 		<form action="../reply/doWrite" method="POST" onsubmit="ReplyWrite__submit(this); return false;">
-			<input type="hidden" name="relTypeCode" value="article" />
-			<input type="hidden" name="relId" value="${article.id }" />
+			<input type="hidden" name="relTypeCode" value="article" /> <input type="hidden" name="relId" value="${article.id }" />
 			<table class="write-box table-box-1" border="1">
 				<tbody>
 					<tr>
 						<th>내용</th>
-						<td>
-							<textarea class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
-								placeholder="내용을 입력해주세요" name="body"> </textarea>
-						</td>
+						<td><textarea class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+								placeholder="내용을 입력해주세요" name="body"> </textarea></td>
 					</tr>
 					<tr>
 						<th></th>
-						<td>
-							<input class="btn btn-outline btn-info" type="submit" value="댓글 작성" />
-						</td>
+						<td><input class="btn btn-outline btn-info" type="submit" value="댓글 작성" /></td>
 					</tr>
 				</tbody>
 			</table>
@@ -293,10 +286,14 @@
 		<h2>댓글 리스트(${repliesCount })</h2>
 		<table class="table-box-1 table" border="1">
 			<colgroup>
+				<col style="width: 3%" />
+				<col style="width: 5%" />
+				<col style="width: 50%" />
 				<col style="width: 10%" />
-				<col style="width: 20%" />
-				<col style="width: 60%" />
-				<col style="width: 10%" />
+				<col style="width: 5%" />
+				<col style="width: 5%" />
+				<col style="width: 5%" />
+				<col style="width: 5%" />
 			</colgroup>
 			<thead>
 				<tr>
@@ -306,6 +303,10 @@
 					<th>작성자</th>
 					<th>좋아요</th>
 					<th>싫어요</th>
+<%-- 					<c:if test="${rq.isLogined() }"> --%>
+						<th>수정</th>
+						<th>삭제</th>
+<%-- 					</c:if> --%>
 				</tr>
 			</thead>
 			<tbody>
@@ -318,6 +319,30 @@
 						<td>${reply.extra__writer }</td>
 						<td>${reply.goodReactionPoint }</td>
 						<td>${reply.badReactionPoint }</td>
+						<td><c:if test="${reply.userCanModify }">
+								<a style="white-space: nowrap;" class="btn btn-outline" href="../reply/modify?id=${article.id }">수정</a>
+							</c:if></td>
+						<td><c:if test="${reply.userCanDelete }">
+								<a style="white-space: nowrap;" class="btn btn-outline"
+									onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;" href="../reply/doDelete?id=${article.id }">삭제</a>
+							</c:if></td>
+
+
+						<!-- 						좋아요/싫어요 -->
+						<%-- 						<td><button id="likeButton" class="btn btn-outline btn-sm btn-success" onclick="doGoodReaction(${reply.id})">👍 --%>
+						<%-- 								${reply.goodReactionPoint }</button></td> --%>
+						<%-- 						<td><button id="DislikeButton" class="btn btn-outline btn-sm btn-error" onclick="doBadReaction(${reply.id})">👎 --%>
+						<%-- 								${reply.badReactionPoint }</button></td> --%>
+						<!-- 						수정/삭제 -->
+						<%-- 						<c:if test="${rq.isLogined() }"> --%>
+						<%-- 							<td><a class="btn btn-sm btn-outline" href="../reply/modify?id=${reply.id }">수정</a></td> --%>
+						<!-- 							<td><a class="btn btn-sm btn-outline" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;" -->
+						<%-- 									href="../reply/doDelete?relId=${reply.relId }&id=${reply.id }">삭제</a></td> --%>
+						<%-- 						</c:if> --%>
+
+
+
+
 					</tr>
 				</c:forEach>
 			</tbody>

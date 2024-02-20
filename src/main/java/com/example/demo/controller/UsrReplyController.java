@@ -57,5 +57,29 @@ public class UsrReplyController {
 		return Ut.jsReplace(writeReplyRd.getResultCode(), writeReplyRd.getMsg(), "../article/detail?id=" + relId);
 
 	}
+	
+	
+//	// 로그인 체크 -> 유무 체크 -> 권한 체크 -> 삭제
+//	@RequestMapping("/usr/reply/doDelete")
+//	@ResponseBody
+//	public String doDelete(HttpServletRequest req, int relId, int id) {
+//		Rq rq = (Rq) req.getAttribute("rq");
+//
+//		Reply reply = replyService.getReply(id);
+//
+//		if (reply == null) {
+//			return Ut.jsHistoryBack("F-1", Ut.f("존재하지 않는 댓글입니다", id));
+//		}
+//
+//		ResultData loginedMemberCanDeleteRd = replyService.userCanDelete(rq.getLoginedMemberId(), relId, reply);
+//
+//		if (loginedMemberCanDeleteRd.isSuccess()) {
+//			replyService.deleteReply(id);
+//		}
+//
+//		return Ut.jsReplace(loginedMemberCanDeleteRd.getResultCode(), loginedMemberCanDeleteRd.getMsg(),
+//				"../article/detail?id=" + relId);
+//	}
+	
 
 }
