@@ -6,8 +6,8 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
-import com.example.demo.vo.Article;
 import com.example.demo.vo.Reply;
 
 @Mapper
@@ -33,23 +33,30 @@ public interface ReplyRepository {
 				relId = #{relId},
 				`body` = #{body}
 			""")
-	public void writeReply(int loginedMemberId, String relTypeCode, int relId, String body);
+	void writeReply(int loginedMemberId, String relTypeCode, int relId, String body);
 
 	@Select("SELECT LAST_INSERT_ID()")
 	public int getLastInsertId();
 
-	
 	@Select("""
-			SELECT *
-			FROM reply
-			WHERE id = #{id}
+				SELECT R.*
+				FROM reply AS R
+				WHERE R.id = #{id}
 			""")
 	Reply getReply(int id);
-	
-	@Delete("DELETE FROM reply WHERE id = #{id}")
-	public void deleteReply(int id);
 
-	
- 
+	@Delete("""
+				DELETE FROM reply
+				WHERE id = #{id}
+			""")
+	void deleteReply(int id);
+
+	@Update("""
+			UPDATE reply
+			SET `body` = #{body},
+			updateDate = NOW()
+			WHERE id = #{id}
+				""")
+	public void modifyReply(int id, String body);
 
 }

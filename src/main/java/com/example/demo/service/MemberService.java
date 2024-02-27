@@ -25,6 +25,12 @@ public class MemberService {
 		if (existsMember != null) {
 			return ResultData.from("F-7", Ut.f("이미 사용중인 아이디(%s)입니다", loginId));
 		}
+		
+		if (existsMember == null) {
+			// return ResultData.from("F-7", Ut.f("사용 가능한 아이디(%s)입니다", loginId));
+
+		}
+
 
 		existsMember = getMemberByNameAndEmail(name, email);
 
