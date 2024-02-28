@@ -22,7 +22,7 @@
 <body>
 	<header>
 		<div class="h-20 flex mx-auto items-center text-3xl">
-			<a href="/">LOGO</a>
+			<a href="/"><img src = https://i.ibb.co/XVsJbck/logo-removebg-preview.png" width = "200"/></a>
 			<div class="flex-grow"></div>
 			<ul class="flex">
 				<li><a class="hover:underline" href="/">HOME</a></li>
@@ -46,4 +46,4 @@
 		</div>
 	</header>
 	<h1 style="font-size: 2rem;">${pageTitle }</h1>
-	<hr />
+<!-- 	<hr /> -->
