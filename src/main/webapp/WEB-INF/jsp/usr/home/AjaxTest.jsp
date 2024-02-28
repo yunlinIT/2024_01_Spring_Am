@@ -103,8 +103,10 @@
 			num1 : num1,
 			num2 : num2
 		}, function(data) {
-
+	
+			$('.rs').text(data.rs);
 			$('.rs-msg').text(data.msg);
+			$('.rs-code').text(data.code);
 
 		}, 'json');
 

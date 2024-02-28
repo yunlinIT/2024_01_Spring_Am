@@ -25,12 +25,6 @@ public class MemberService {
 		if (existsMember != null) {
 			return ResultData.from("F-7", Ut.f("이미 사용중인 아이디(%s)입니다", loginId));
 		}
-		
-		if (existsMember == null) {
-			// return ResultData.from("F-7", Ut.f("사용 가능한 아이디(%s)입니다", loginId));
-
-		}
-
 
 		existsMember = getMemberByNameAndEmail(name, email);
 
@@ -56,6 +50,12 @@ public class MemberService {
 
 	public Member getMember(int id) {
 		return memberRepository.getMember(id);
+	}
+
+	public ResultData modify(int loginedMemberId, String loginPw, String name, String nickname, String cellphoneNum,
+			String email) {
+		memberRepository.modify(loginedMemberId, loginPw, name, nickname, cellphoneNum, email);
+		return ResultData.from("S-1", "회원정보 수정 완료");
 	}
 
 }
