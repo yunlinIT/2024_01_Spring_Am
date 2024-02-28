@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="pageTitle" value="API TEST4"></c:set>
+<c:set var="pageTitle" value="API TEST5"></c:set>
 
 <%@ include file="../common/head.jspf"%>
 
@@ -22,10 +22,11 @@
 	<script>
 		var lat;
 		var lon;
-// 		주차장
+
+// 		대전광역시 서구_휴게음식점현황
 		async function getData2() {
-			const API_KEY = 'ixQo%2FUislf4YkHMgIBaDkwtFr%2FjmxRZLI55pNfsWntbXQewj3hrI50T6IoARyuZNWhk10ra5m39wMU57zRKeIw%3D%3D';
-			const url = 'https://www.yuseong.go.kr/ys_parking/ysparkingList/ORP/getJSONData.do?_wadl&type=json';
+// 			const API_KEY = 'ixQo%2FUislf4YkHMgIBaDkwtFr%2FjmxRZLI55pNfsWntbXQewj3hrI50T6IoARyuZNWhk10ra5m39wMU57zRKeIw%3D%3D';
+			const url = 'https://www.seogu.go.kr/seoguAPI/3660000/getRestRstrt?pageNo=1&numOfRows=1659';
 			const response = await fetch(url);
 			const data = await response.json();
 			
@@ -34,14 +35,22 @@
 			console.log(data.response.body);
 			console.log(data.response.header);
 			console.log(data.response.body.items);
-			console.log(data.response.body.items[0]);
-			console.log(data.response.body.items[0].item.addr);
-			console.log(data.response.body.items[0].item.latitude);
-			console.log(data.response.body.items[0].item.longitude);
+			console.log(data.response.body.items[10]);
+			console.log(data.response.body.items[10].rn_adrs);
+ 			console.log(data.response.body.items[10].la);
+ 			console.log(data.response.body.items[10].lo); 
 			
-			lat = data.response.body.items[0].item.latitude;
-			lon = data.response.body.items[0].item.longitude;
+			lat = data.response.body.items[10].la;
+			lon = data.response.body.items[10].lo;
+		
+			
+			console.log(lat); 
+			console.log(lon); 
+			console.log(typeof lon); 
+			console.log(typeof lat); 
 		}
+		
+		typeof   
 
 		getData2();
 
@@ -71,7 +80,21 @@
 			// 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
 			map.panTo(moveLatLon);
 		}
-	</script>
+		
+		// 마커가 표시될 위치입니다 
+		var markerPosition  = new kakao.maps.LatLng(36.34919313, 127.3955023); //이놈이 문제!!!
+
+		// 마커를 생성합니다
+		var marker = new kakao.maps.Marker({
+		    position: markerPosition
+		});
+
+		// 마커가 지도 위에 표시되도록 설정합니다
+		marker.setMap(map);
+
+		// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
+		// marker.setMap(null);   
+</script>
 </body>
 </html>
 
